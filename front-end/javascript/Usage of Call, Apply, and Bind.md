@@ -152,19 +152,19 @@ document.getElementById('saveBtn').addEventListener('click', saveButton.click.bi
 
 ## Beginner
 
-### What is the purpose of `call`, `apply`, and `bind` in JavaScript?
+### 1. What is the purpose of `call`, `apply`, and `bind` in JavaScript?
 
 **Answer:** These methods are used to control the value of `this` inside a function.
 
-### What happens when you call a function without binding its context?
+### 2. What happens when you call a function without binding its context?
 
 **Answer:** In non-strict mode, `this` will default to the global object (e.g., `window` in browsers). In strict mode, `this` will be `undefined`.
 
-### Can you bind a function to multiple contexts?
+### 3. Can you bind a function to multiple contexts?
 
 **Answer:** No, `bind` creates a new function with a fixed `this` value. You can only bind it to one context at a time.
 
-### What will `func.call()` return if no arguments are passed?
+### 4. What will `func.call()` return if no arguments are passed?
 
 **Answer:** The function will be called with the default `this` value, but no arguments are passed.
 
@@ -172,19 +172,19 @@ document.getElementById('saveBtn').addEventListener('click', saveButton.click.bi
 
 ## Intermediate
 
-### What is the difference between `call` and `apply`?
+### 1. What is the difference between `call` and `apply`?
 
 **Answer:** Both `call` and `apply` call a function with a specific `this` context, but `call` passes arguments individually, while `apply` passes them as an array.
 
-### Explain how `bind` works with callback functions.
+### 2. Explain how `bind` works with callback functions.
 
 **Answer:** `bind` allows you to set a specific `this` context for a function that is later called as a callback. It ensures that `this` remains consistent when the function is executed.
 
-### What will happen if you call a bound function multiple times?
+### 3. What will happen if you call a bound function multiple times?
 
 **Answer:** The function will retain the same `this` context each time, and the arguments will be passed as defined by the `bind` operation.
 
-### What does `bind` return?
+### 4. What does `bind` return?
 
 **Answer:** `bind` returns a new function with the specified `this` context, which can be called later.
 
@@ -192,7 +192,7 @@ document.getElementById('saveBtn').addEventListener('click', saveButton.click.bi
 
 ## Advanced
 
-### How would you implement a polyfill for `bind`?
+### 1. How would you implement a polyfill for `bind`?
 
 **Answer:** A custom implementation for `bind` involves using `apply` inside the new function to ensure the correct `this` context and arguments.
 
@@ -205,7 +205,7 @@ Function.prototype.myBind = function(context, ...args) {
 };
 ```
 
-### What is the difference between `bind` and `call` when used in an event listener?
+### 2. What is the difference between `bind` and `call` when used in an event listener?
 
 **Answer:** `call` will immediately invoke the function with the provided `this`, while `bind` creates a new function that binds `this` and returns it. This is crucial in event listeners where `this` must refer to a specific object even after the event occurs.
 
@@ -215,7 +215,7 @@ Function.prototype.myBind = function(context, ...args) {
 
 ## Beginner
 
-### What will be the output of the following code?
+### 1. What will be the output of the following code?
 
 ```javascript
 const obj = { name: 'Alice' };
@@ -228,7 +228,7 @@ greet();
 **Answer:** `undefined`  
 **Explanation:** `this` refers to the global object, and `name` is not defined in the global object.
 
-### What will be the output of the following code?
+### 2. What will be the output of the following code?
 
 ```javascript
 const obj = { name: 'Bob' };
@@ -241,7 +241,7 @@ greet.call(obj);
 **Answer:** `Bob`  
 **Explanation:** `call` sets `this` to the `obj` object.
 
-### What will the following code print?
+### 3. What will the following code print?
 
 ```javascript
 const person = { name: 'Eve' };
@@ -259,7 +259,7 @@ greetPerson();
 
 ## Intermediate
 
-### What is the output of this code?
+### 1. What is the output of this code?
 
 ```javascript
 const obj = { name: 'Charlie' };
@@ -272,7 +272,7 @@ greet.apply(obj, ['London']);
 **Answer:** `Charlie is from London`  
 **Explanation:** `apply` sets `this` to `obj` and passes the arguments as an array.
 
-### What will the output of this be?
+### 2. What will the output of this be?
 
 ```javascript
 function multiply(a, b) {
@@ -291,7 +291,7 @@ Math
 
 **Explanation:** `bind` sets `this` to `{ name: 'Math' }` and binds the first argument (`2`). The second argument (`3`) is passed during the function call.
 
-### What will the following output?
+### 3. What will the following output?
 
 ```javascript
 const person = { name: 'Mark' };
@@ -308,7 +308,7 @@ greet.call(person, 28, 'USA');
 
 ## Advanced
 
-### What will the output of this code be?
+### 1. What will the output of this code be?
 
 ```javascript
 const user = { name: 'Jordan' };
@@ -322,7 +322,7 @@ setTimeout(boundGreet, 1000);
 **Answer:** `Hello, Jordan`  
 **Explanation:** `bind` locks `this` to `user` and passes `'Hello'` as the first argument. The function is called after 1000ms.
 
-### What is the output of the following?
+### 2. What is the output of the following?
 
 ```javascript
 const obj = { name: 'Anna' };
@@ -335,7 +335,7 @@ greet.call(null, 'Paris');
 **Answer:** `null lives in Paris`  
 **Explanation:** When you pass `null` as `this`, it defaults to the global object in non-strict mode, or `null` in strict mode.
 
-### What will the output be?
+### 3. What will the output be?
 
 ```javascript
 const obj = { name: 'Leo' };
@@ -348,7 +348,7 @@ setTimeout(greet.bind(obj), 1000);
 **Answer:** `Leo`  
 **Explanation:** `bind` ensures that `this` remains tied to `obj` when `greet` is executed after the timeout.
 
-### What will the output be in this scenario?
+### 4. What will the output be in this scenario?
 
 ```javascript
 const func = function(a, b) {
