@@ -46,9 +46,9 @@ console.log(increment()); // 2
 
 ---
 
-## Real-World Examples of Closures
+# Real-World Examples of Closures
 
-### 1. Private Variables in Modules:
+## 1. Private Variables in Modules:
 
 - You can simulate private variables by using closures, allowing functions to interact with these variables but not expose them directly to the outside world.
 
@@ -62,7 +62,7 @@ function createPerson(name) {
 }
 ```
 
-### 2. Callback Functions in Asynchronous Code
+## 2. Callback Functions in Asynchronous Code
 
 - Closures are commonly used when setting timeouts, intervals, or event listeners, as the callback functions retain access to the variables where they were created.
 
@@ -74,7 +74,7 @@ function delayedMessage(message, delay) {
 }
 ```
 
-### 3. Function Memoization
+## 3. Function Memoization
 
 - Closures help in caching results of expensive function calls to optimize performance.
 
@@ -93,7 +93,7 @@ function memoize(fn) {
 }
 ```
 
-### 4. Event Handling
+## 4. Event Handling
 
 - Closures allow event handlers to maintain state across multiple invocations.
 
@@ -112,7 +112,7 @@ function createButton() {
 
 ---
 
-# Discuss the performance implications of closures in JavaScript, especially in terms of memory usage and execution speed.
+# Cons
 - Memory Usage: Closures can increase memory usage because they keep a reference to the variables from their outer scope. This means the variables aren't eligible for garbage collection as long as the closure exists.
 
 - Memory Leaks: If closures are used improperly (e.g., keeping large objects or DOM elements in memory when they are no longer needed), they can cause memory leaks. The closure will prevent the garbage collector from releasing memory for those variables.
