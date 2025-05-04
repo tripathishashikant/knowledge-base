@@ -1,0 +1,1 @@
+// This is the entry point for the activity selection module.

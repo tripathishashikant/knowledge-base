@@ -1,0 +1,1 @@
+// This is the entry point for the N-Queens module.
