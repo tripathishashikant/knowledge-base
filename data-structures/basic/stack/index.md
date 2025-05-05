@@ -28,23 +28,80 @@ Solves problems involving:
 
 - Undo/redo operations  
 - Expression evaluation  
-- Syntax parsing  
+- Syntax parsing 
+
+**Extreme Conditions in a Stack**
+Stack Underflow:
+- Occurs when you try to perform a pop or peek operation on an empty stack.
+- Handling: Check if the stack is empty before performing these operations.
+Stack Overflow:
+- Occurs when you try to push an element into a stack that has reached its maximum capacity (in languages or implementations where the stack size is fixed).
+- Handling: Check if the stack is full before performing a push operation.
 
 ## JS Implementation Options
 
 **Using Array**
 
 ```js
-let stack = [];
-stack.push(1);
-stack.pop();
+class Stack {
+  constructor() {
+    this.items = []; 
+  }
+
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return "Stack is empty"; 
+    }
+    return this.items.pop();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return "Stack is empty"; 
+    }
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+
+  print() {
+    console.log(this.items);
+  }
+}
+
+const stack = new Stack();
+
+stack.push(10);
+stack.push(20); 
+stack.push(30); 
+console.log(stack.peek());
+console.log(stack.pop());  
+console.log(stack.size()); 
+console.log(stack.isEmpty());
+stack.print();
+```
+**Output:**
+```js
+30
+30
+2
+false
+[ 10, 20 ]
 ```
 
 ## Using Object
 
 ```js
-// stack implementation
-
 function Stack() {
     this.top = -1
     this.storage = {}
@@ -79,7 +136,33 @@ function Stack() {
 }
 
 const stack1 = new Stack()
+
+stack1.push(1)
+stack1.push(2)
+
+console.log(stack1.pop())
+stack1.push(2)
+console.log(stack1.pop())
+stack1.push(2)
+console.log(stack1.pop())
+console.log(stack1.pop())
+console.log(stack1.pop())
 ```
+
+**Output:**
+```js
+2
+2
+2
+1
+null
+```
+
+**Time Complexity:**
+- All operations in the Stack Class ( Push , Pop, Peek, isEmpty, Size,) have O(1) time complexity.  print Stack(), which is O(n).
+
+**Auxiliary Space:**
+- O(1) for all operations.
 
 ## Using Linked List
 
@@ -91,18 +174,83 @@ Nodes contain:
 More flexible with memory than arrays.
 
 ```js
-function Node(value) {
-  this.value = value;
-  this.next = null;
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
 }
 
-function Stack() {
-  this.top = null;
+class Stack {
+    constructor() {
+        this.top = null; 
+        this.size = 0;   
+    }
 
-  this.push = function (val) {
-    const newNode = new Node(val);
-    newNode.next = this.top;
+    push(value) {
+        const newNode = new Node(value);
+        newNode.next = this.top; 
+        this.top = newNode; 
+        this.size++;
+    }
+
+    pop() {
+        if (this.isEmpty()) {
+            console.log("Stack is empty!");
+            return null;
+        }
+        const poppedValue = this.top.value;
+        this.top = this.top.next;
+        this.size--;
+        return poppedValue;
+    }
+
+    peek() {
+        return this.isEmpty() ? null : this.top.value;
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    printStack() {
+        let current = this.top;
+        let stackValues = [];
+        while (current) {
+            stackValues.push(current.value);
+            current = current.next;
+        }
+        console.log("Stack:", stackValues.join(" -> "));
+    }
+}
+
+const stack = new Stack();
+stack.push(10);
+stack.push(20);
+stack.push(30);
+stack.printStack();
+console.log("Top Element:", stack.peek()); 
+console.log("Popped Element:", stack.pop()); 
+stack.printStack();
 ```
+
+**Output:**
+```js
+Stack: 30 -> 20 -> 10
+Top Element: 30
+Popped Element: 30
+Stack: 20 -> 10
+```
+
+**Time Complexity:**
+- All operations in the Stack Class ( Push , Pop, Peek, isEmpty, Size,) have O(1) time complexity.
+
+**Auxiliary Space:**
+- O(1) for all operations.
 
 ---
 
