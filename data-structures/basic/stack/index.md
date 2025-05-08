@@ -174,76 +174,69 @@ Nodes contain:
 More flexible with memory than arrays.
 
 ```js
+// Link list implementation using stack
+
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
+    constructor(data) {
+        this.next = null
+        this.data = data
     }
 }
 
 class Stack {
     constructor() {
-        this.top = null; 
-        this.size = 0;   
+        this.head = null
     }
-
-    push(value) {
-        const newNode = new Node(value);
-        newNode.next = this.top; 
-        this.top = newNode; 
-        this.size++;
-    }
-
-    pop() {
-        if (this.isEmpty()) {
-            console.log("Stack is empty!");
-            return null;
-        }
-        const poppedValue = this.top.value;
-        this.top = this.top.next;
-        this.size--;
-        return poppedValue;
-    }
-
-    peek() {
-        return this.isEmpty() ? null : this.top.value;
-    }
-
+    
     isEmpty() {
-        return this.size === 0;
+        return this.head === null
     }
-
-    getSize() {
-        return this.size;
+    
+    peek() {
+        if (this.isEmpty()) return "Stack is Empty!"
+        
+        return this.head.data
     }
-
-    printStack() {
-        let current = this.top;
-        let stackValues = [];
-        while (current) {
-            stackValues.push(current.value);
-            current = current.next;
-        }
-        console.log("Stack:", stackValues.join(" -> "));
+    
+    push(newData) {
+        const newNode = new Node(newData);
+        
+        if (!newNode) return "Stack overflow"
+        
+        newNode.next = this.head
+        this.head = newNode
+    }
+    
+    pop() {
+        if (this.isEmpty()) return "Stack is empty"
+        
+        let temp = this.head
+        
+        this.head = this.head.next
+        temp = null
     }
 }
 
-const stack = new Stack();
-stack.push(10);
-stack.push(20);
-stack.push(30);
-stack.printStack();
-console.log("Top Element:", stack.peek()); 
-console.log("Popped Element:", stack.pop()); 
-stack.printStack();
+const stack1 = new Stack()
+
+stack1.push(10)
+stack1.push(11)
+stack1.push(12)
+console.log(stack1.peek())
+stack1.pop()
+console.log(stack1.peek())
+stack1.pop()
+console.log(stack1.peek())
+stack1.pop()
+console.log(stack1.peek())
 ```
 
 **Output:**
 ```js
-Stack: 30 -> 20 -> 10
-Top Element: 30
-Popped Element: 30
-Stack: 20 -> 10
+12
+11
+10
+Stack is Empty!
 ```
 
 **Time Complexity:**
