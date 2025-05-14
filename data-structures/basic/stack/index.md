@@ -191,13 +191,13 @@ More flexible with memory than arrays.
 
 class Node {
     constructor(data) {
-        this.next = null
         this.data = data
+        this.next = null
     }
 }
 
 class Stack {
-    constructor() {
+    constructor(data) {
         this.head = null
     }
     
@@ -206,27 +206,28 @@ class Stack {
     }
     
     peek() {
-        if (this.isEmpty()) return "Stack is Empty!"
+        if (this.head === null) return "Stack is Empty!"
         
         return this.head.data
     }
     
-    push(newData) {
-        const newNode = new Node(newData);
+    pop() {
+        if (this.head === null) return "Stack is Empty!"
         
-        if (!newNode) return "Stack overflow"
+        const value = this.head.data
+        
+        this.head = this.head.next
+        
+        return value
+    }
+    
+    push(data) {
+        const newNode = new Node(data)
+        
+        if (!newNode) return "Something went wrong. Please try again!"
         
         newNode.next = this.head
         this.head = newNode
-    }
-    
-    pop() {
-        if (this.isEmpty()) return "Stack is empty"
-        
-        let temp = this.head
-        
-        this.head = this.head.next
-        temp = null
     }
 }
 
@@ -236,20 +237,23 @@ stack1.push(10)
 stack1.push(11)
 stack1.push(12)
 console.log(stack1.peek())
-stack1.pop()
+console.log('Popped value ', stack1.pop())
 console.log(stack1.peek())
-stack1.pop()
+console.log('Popped value ', stack1.pop())
 console.log(stack1.peek())
-stack1.pop()
-console.log(stack1.peek())
+console.log('Popped value ', stack1.pop())
+console.log('Popped value ', stack1.peek())
 ```
 
 **Output:**
 ```js
 12
+Popped value  12
 11
+Popped value  11
 10
-Stack is Empty!
+Popped value  10
+Popped value  Stack is Empty!
 ```
 
 **Time Complexity:**
