@@ -31,10 +31,11 @@ Solves problems involving:
 - Syntax parsing 
 
 **Extreme Conditions in a Stack**
-Stack Underflow:
+### Stack Underflow:
 - Occurs when you try to perform a pop or peek operation on an empty stack.
 - Handling: Check if the stack is empty before performing these operations.
-Stack Overflow:
+
+### Stack Overflow:
 - Occurs when you try to push an element into a stack that has reached its maximum capacity (in languages or implementations where the stack size is fixed).
 - Handling: Check if the stack is full before performing a push operation.
 
@@ -99,6 +100,15 @@ false
 [ 10, 20 ]
 ```
 
+**Time Complexity:**
+- All operations in the Stack Class ( Push , Pop, Peek, isEmpty, Size,) have O(1) time complexity.  print Stack(), which is O(n).
+
+**Space Complexity:**
+- O(n) for all operations.
+
+**Auxiliary Space:**
+- O(1) for all operations.
+
 ## Using Object
 
 ```js
@@ -160,6 +170,9 @@ null
 
 **Time Complexity:**
 - All operations in the Stack Class ( Push , Pop, Peek, isEmpty, Size,) have O(1) time complexity.  print Stack(), which is O(n).
+
+**Space Complexity:**
+- O(n) for all operations.
 
 **Auxiliary Space:**
 - O(1) for all operations.
